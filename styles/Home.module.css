@@ -83,7 +83,7 @@
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
   min-width: 300px;
-  min-height: 200px;
+  height: 250px;
   max-width: 200px;
 }
 
@@ -116,4 +116,34 @@
     width: 100%;
     flex-direction: column;
   }
+}
+
+.widget {
+  transition: color 0.15s ease, border-color 0.15s ease;
+  color: #777;
+  text-shadow: 0 1px #fff;
+  /* background: #fafafa; */
+  border: 1px solid #eaeaea;
+  padding: 20px;
+  border-radius: 3px;
+  margin: 10px;
+  min-width: 300px;
+  height: 100px;
+  max-width: 200px;
+}
+
+.widget p{
+  margin-top: 10px
+}
+
+.widget a{
+  color: #0070f3;
+  text-decoration: none;
+}
+
+.widget:hover,
+.widget:focus,
+.widget:active {
+  color: #0070f3;
+  border-color: #0070f3;
 }
