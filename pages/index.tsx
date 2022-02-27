@@ -88,6 +88,7 @@ const Home: NextPage = () => {
             key={item.id}
             title={item.name}
             description={item.description}
+            img={item.image}
             href={item.website}
             />
           })
