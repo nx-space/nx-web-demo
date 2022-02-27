@@ -43,7 +43,7 @@ const Home: NextPage = () => {
       title={item.title}
       // 限制字数
       description={item.content.substring(0, 45)}
-      href={'#' + item.path}
+      href={'/posts/' + item.path}
     />
     })}
 
