@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "commit": "git add . && cz && git push",
+    "changelog": "cz-conventional-changelog -p angular -i CHANGELOG.md -s"
+    
   },
   "dependencies": {
     "next": "12.1.0",
@@ -18,6 +21,12 @@
     "@types/react": "17.0.39",
     "eslint": "8.10.0",
     "eslint-config-next": "12.1.0",
-    "typescript": "4.5.5"
+    "typescript": "4.5.5",
+    "cz-conventional-changelog": "3.0.0"
+  },
+  "config": {
+    "comitizen": {
+      "path": "cz-conventional-changelog"
+    }
   }
 }
