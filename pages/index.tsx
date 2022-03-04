@@ -8,33 +8,7 @@ import { Widget } from '../components/Widget'
 import styles from '../styles/Home.module.css'
 import $axios from '../utils/request'
 
-const Home: NextPage = () => {
-
-  const [postData, setPostData] = useState<any>([])
-  const [page, setPage] = useState<any>([])
-  const [friends, setFriends] = useState<any>([])
-  const [comments, setComments] = useState<any>([])
-  const [categories, setCategories] = useState<any>([])
-
-  useMount(() => {
-    $axios.get('/posts/list').then(res => {
-      setPostData(res.data)
-    })
-    $axios.get('/pages/list').then(res => {
-      setPage(res.data)
-    })
-    $axios.get('/friends/list').then(res => {
-      console.log(res.data)
-      setFriends(res.data)
-    })
-    $axios.get('/comments/list').then(res => {
-      setComments(res.data)
-    })
-    $axios.get('/categories/list').then(res => {
-      
-      setCategories(res.data)
-    })
-  })
+const Home: NextPage = (props: any) => {
 
   const renderCards = (data: any) => {
     return data.map((item: any) => {
@@ -69,13 +43,13 @@ const Home: NextPage = () => {
           Posts
         </h3>
         <div className={styles.grid}>
-          {renderCards(postData)}
+          {renderCards(props.post)}
         </div>
         <h3 className={styles.title} style={{margin: 30}}>
           Pages
         </h3>
         <div className={styles.grid}>
-        {renderCards(page)}
+        {renderCards(props.page)}
         </div>
 
         <h3 className={styles.title} style={{margin: 30}}>
@@ -83,7 +57,7 @@ const Home: NextPage = () => {
         </h3>
         <div className={styles.grid}>
         {
-          friends.map((item: any) => {
+          props.friends.map((item: any) => {
             return <Widget
             key={item.id}
             title={item.name}
@@ -100,7 +74,7 @@ const Home: NextPage = () => {
         </h3>
         <div className={styles.grid}>
         {
-          comments.map((item: any) => {
+          props.comments.map((item: any) => {
             return <Widget
             key={item.id}
             title={item.author}
@@ -121,6 +95,31 @@ const Home: NextPage = () => {
       </footer>
     </div>
   )
+}
+
+Home.getInitialProps = async () => {
+  const post = await $axios.get('/posts/list').then(res => {
+    return res.data
+  })
+  const page = await  $axios.get('/pages/list').then(res => {
+    return res.data
+  })
+  const friends = await  $axios.get('/friends/list').then(res => {
+    return res.data
+  })
+  const comments = await  $axios.get('/comments/list').then(res => {
+    return res.data
+  })
+  const categories = await  $axios.get('/categories/list').then(res => {
+    return res.data
+  })
+  return {
+    post: post,
+    page: page,
+    friends: friends,
+    comments: comments,
+    categories: categories
+  }
 }
 
 export default Home
