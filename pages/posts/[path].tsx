@@ -3,7 +3,7 @@
  * @author: Wibus
  * @Date: 2022-02-27 20:28:11
  * @LastEditors: Wibus
- * @LastEditTime: 2022-03-04 22:46:24
+ * @LastEditTime: 2022-03-04 22:52:41
  * Coding With IU
  */
 
@@ -26,7 +26,7 @@ const Posts: NextPage = (props: any) => {
           {props.data.title}
         </h1>
         <p style={{color: 'rgb(126 126 126)'}}>作者: wibus ｜ 路径: {props.data.path} ｜ 分类号：{props.data.slug}</p>
-        <p id="contents">
+        <p id="contents" style={{padding: 75}}>
           <Markdown
             // eslint-disable-next-line react/no-children-prop
             children={props.data.content}
