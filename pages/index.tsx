@@ -12,12 +12,13 @@ const Home: NextPage = (props: any) => {
 
   const renderCards = (data: any, type: any) => {
     return data.map((item: any) => {
+      let sub =  type == 'posts' ? `/${type}/${item.slug}/` : '/'
       return <Card
       key={type + "_" + item.id}
       title={item.title}
       // 限制字数
       description={item.content.substring(0, 45)}
-      href={'/posts/' + item.path}
+      href={sub + item.path}
     />
     })}
 
@@ -29,7 +30,7 @@ const Home: NextPage = (props: any) => {
       
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://github.com/Gold-Space/GS-web-demo">GS-web-demo!</a>
+          Welcome to <a href="https://github.com/wibus-wee/GS-web-demo">GS-web-demo!</a>
         </h1>
 
         <p className={styles.description}>
@@ -41,13 +42,13 @@ const Home: NextPage = (props: any) => {
           Posts
         </h3>
         <div className={styles.grid}>
-          {renderCards(props.post, "post")}
+          {renderCards(props.post, "posts")}
         </div>
         <h3 className={styles.title} style={{margin: 30}}>
           Pages
         </h3>
         <div className={styles.grid}>
-        {renderCards(props.page, "page")}
+        {renderCards(props.page, "pages")}
         </div>
 
         <h3 className={styles.title} style={{margin: 30}}>

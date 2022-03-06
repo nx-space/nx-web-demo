@@ -11,13 +11,17 @@
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
   },
   "dependencies": {
+    "@types/react-syntax-highlighter": "^13.5.2",
     "axios": "^0.26.0",
     "next": "12.1.0",
     "qier-progress": "^1.0.4",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-markdown": "^8.0.0",
-    "react-use": "^17.3.2"
+    "react-syntax-highlighter": "^15.4.5",
+    "react-use": "^17.3.2",
+    "rehype-raw": "^6.1.1",
+    "remark-gfm": "^3.0.1"
   },
   "devDependencies": {
     "@types/node": "17.0.21",
