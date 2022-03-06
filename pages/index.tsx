@@ -10,10 +10,10 @@ import $axios from '../utils/request'
 
 const Home: NextPage = (props: any) => {
 
-  const renderCards = (data: any) => {
+  const renderCards = (data: any, type: any) => {
     return data.map((item: any) => {
       return <Card
-      key={item.id}
+      key={type + "_" + item.id}
       title={item.title}
       // 限制字数
       description={item.content.substring(0, 45)}
@@ -41,13 +41,13 @@ const Home: NextPage = (props: any) => {
           Posts
         </h3>
         <div className={styles.grid}>
-          {renderCards(props.post)}
+          {renderCards(props.post, "post")}
         </div>
         <h3 className={styles.title} style={{margin: 30}}>
           Pages
         </h3>
         <div className={styles.grid}>
-        {renderCards(props.page)}
+        {renderCards(props.page, "page")}
         </div>
 
         <h3 className={styles.title} style={{margin: 30}}>
@@ -57,7 +57,7 @@ const Home: NextPage = (props: any) => {
         {
           props.friends.map((item: any) => {
             return <Widget
-            key={item.id}
+            key={"friends" + item.id}
             title={item.name}
             description={item.description}
             img={item.image}
@@ -74,7 +74,7 @@ const Home: NextPage = (props: any) => {
         {
           props.comments.map((item: any) => {
             return <Widget
-            key={item.id}
+            key={"comments_" +item.cid}
             title={item.author}
             description={item.content}
             href={item.website}
